@@ -1,0 +1,72 @@
+pink pearl freshwater
+necklace and matching earrings
+
+system descriptions are 0x71 long...
+
+Planet descriptions seem to be from 0x162E9 to 0x1684E (length varies)...
+
+
+Artemis:	.=.==
+Draconis:	=====
+Magdalen:	...=.
+Wag:		==.==
+Rha:		=.=.=
+
+terran, asteroid, toxis, tundra, gas
+
+0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f  g
+
+07 00 20 00 03 03 00 02 08 00 03 02 00 05 00 00 00
+FF FF 20 01 01 01 01 01 02 00 02 00 00 04 00 00 00 
+FF FF 20 02 03 01 00 02 00 01 01 00 00 04 00 00 00
+FF FF 20 03 03 01 01 02 04 02 03 01 00 04 00 00 00
+FF FF 20 04 02 03 01 03 02 01 02 00 00 07 00 00 00
+
+
+
+Block 0 and 1 indicate the colony number...
+Block 2 indicates star system
+Block 3 indicates position in star system (0 throgh 4)
+THESE MUST MATCH INDICES IN THE STAR SYSTEM PORTION OF FILE
+Block 4 indicates type of body (1 asteroid, 2 gas giant, 3 planet)
+Block 5 seems to control size (0 tiny, 4 huge)
+Block 6 seems to control gravity (0 low, 1 med, 2 high)
+Block 7 UNKNOWN, seems to always be 0,1,2,3... always 0 on "constructed" planets?
+Block 8 seems to control type of planet
+	(0 toxic, 1 radiated, 2 barren, 3 desert, 4 tundra,
+	5 ocean, 6 swamp, 7 arid, 8 terran, 9 gaia)
+Block 9, controls planetary "scenery" graphic on colony view (0, 1, 2), seems randomly assigned
+Block A seems to control richness... (00 is ultra poor, 04 is ultra rich)
+Block B seems to control base farming of the planet
+Block C, number of "terraforms" the planet has undergone (difficult to evaluate at present) (0 through 3)
+Block D, related to size, 2, 4, 5, 7, 10 for tiny through huge... they are *ALMOST ALWAYS* but not always correlated to the size... what is this used for?  Why the exceptions?
+Block E seems to indicate constructed planets... 0 for regular (all have these at first), 20 for constructed from asteroid, 25 for constructed from gas giant... hmmm, why note it?
+Block F are some special attributes (00 nothing, 0A artifacts, 0B orion, 05 gem deposits, 04 gold deposits, 06 natives, 07 splinter colony)
+Block G UNKNOWN, but always 0 at first, in late game seems to be 2 on well developed worlds: contemplation, indicates presence or absence of weather control?... should check
+
+1010 artifacts...
+1011 orion...
+0101 gem...
+0100 gold...
+0110 natives...
+0111 splinter...
+
+-------------
+
+Within stars themselves...
+
+Block 15-16 is the X-coordinate (from the left)
+Block 17-18 is the Y-coordinate (from the top)
+Block 19 is the size of the star (0=big, 1=med, 2=small)
+Block 20 seems *SOMEHOW* related to the owner... but it doesn't follow an easily interpretable scheme when there are multiple owners?
+Block 22 is the color of the star (blue, white, yellow, orange, red, brown, blackhole)
+
+-----------------
+
+Colonies:
+
+Start at 0x25d extend more or less up to the beginning of the planets.  (Curiously, there are 250 colony spots, but 360 spots for planets.)
+
+0x169 length blocks, prior to the planets.  Prefixed when absent with 6 0xFF bytes.
+
+Block 2 and 3 indicate planet number.
